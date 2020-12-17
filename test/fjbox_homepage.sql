@@ -19,6 +19,35 @@
 -- Table structure for table `board`
 --
 
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` varchar(50) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `user_name` varchar(100) NOT NULL,
+  `user_password` varchar(100) NOT NULL,
+  `user_auth` int DEFAULT NULL,
+  `user_group` varchar(100) DEFAULT NULL,
+  `user_device` varchar(100) NOT NULL,
+  `last_login` timestamp NULL DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('1231','1231','1231','1231','$2b$10$YF9iKwWQCyvuIcDhI0dLDOcxOVCH0duITNJ66Bj0u7H6wj1Dec84O',0,'1231','장비없음','2020-12-16 02:11:22','active'),('12345','3232','1234','1234','$2b$10$wbkO3VlD58.DX6AKwBQzsONb.EAHfmoNogE8RSWFofMR8188MPhua',0,'1234','1234',NULL,''),('15','3232','3','23','$2b$10$Gscah0lcJqSBxztW7T3wfeITP6wICVg3qaKQl/o7PB.8LDpTb.h0u',0,'2','',NULL,NULL),('2324','232','232','232','$2b$10$EVb81Xls2qVr45N6OuzRN.TilJlCgu52AxPoLOOQXAtgVAFvXa3re',0,'232','232',NULL,NULL),('aa','aa','aa','aa','$2b$10$KC0K9.0i1cz6SogOywHGJeK7rDMrn9rdx2dliRy/dyLWDlv2F016.',0,'aa','aa','2020-12-13 07:22:27',NULL),('bcr','bcr','bcr','bcr','$2b$10$9QFO46za39Js0.Ih9PiXLur1OPTEFaYn5tmVJK3xnSLCsnyLh7D7G',2,NULL,'1','2019-12-01 06:18:12','sleep'),('ewqewq','23','23','qweqe','$2b$10$OKECPlxjfogtC4h0cRRQruyPCxqh8P26A27U2Ca/s0Lw8573EzVgK',0,'23','23',NULL,NULL),('gg','gg','gg','gg','$2b$10$J/.0oB/beVzCfAniyRXxo.Y8BQHZoAyXuudmRIlgZxLc9zZLVBBEq',0,'gg','gg',NULL,NULL),('ghghghgh','gh','gh','ghghghgh','$2b$10$2DyHc0IIWp3CBak47qEfZeJEl5La4VTPMlWz1OozuvI1sDaUVVXHW',4,'g','g',NULL,'active'),('hh','hh','hh','hh','$2b$10$A.OMigpAYZEynDtkCwf/SebLQ6ijO.J5IXiylm/9hpGWGgk.HRcDC',0,'hh','hh',NULL,NULL),('human','123','123','비번123','$2b$10$l7jLXed2nLbzell0GhPlR.JOmfwqlRSFiwXseOkLbUKAnCIj/trZ2',0,'123','123','2020-12-15 07:34:39','sleep'),('root','01046514813','ghtndud1993@naver.com','호수영','admin',0,NULL,'4',NULL,'active'),('testjinong','12312','213123','조윤성','$2b$10$P5SiR32ahFsG/9q8olw3ne04XVcxxlJclO00j3L9LGVrOhNgBfi5y',0,'23323','장비없음','2020-12-17 02:05:48',NULL),('tt','tt','tt','tt','$2b$10$T5/QaMAlpykUH5hDxMhL6OkyI5/8CmreP66KAukCqL09Y1Ww4rxxS',4,'tt','tt',NULL,NULL),('wqwqe1','2323','2323','2323','$2b$10$mahk1xBiqTTZmg3jOcl.0ehlxlvHA5tCNn8gglJaeBPQW7K47wiDe',0,NULL,'5',NULL,'dead'),('관리자','0313601970','sooyoung.jinong@gmail.com','관리자','$2b$10$1vVTIPF57FVUfX.YsFz/wuKyLt0cqlSSevD3vPvmJBKgcpgA5RITC',1,NULL,'6','2020-12-17 06:05:31','active'),('지농지농','ㅈㅈ','ㅈㅈ','지농','$2b$10$tO0Hcr1CSmadSnpEGhuu4.TT0riyscVIiey91JgyISkyP0ERAQfci',0,'ㅈㅈ','장비없음','2020-12-16 07:53:53',NULL),('테스트유저','123','123','test','$2b$10$eW6d2zurUhjktOmjcnY7xu55adoZvBHMC3sSdUaffiqmyfYUKn2pG',0,NULL,'7',NULL,'req'),('ㅍㅍ','ㅍㅍ','vv','ㅍㅍ','$2b$10$QdHjT4kwm38L99H7/QkeIe3aPyp0FEPdqRPkl70tGCoxqSTIDBsAO',4,'vv','vv',NULL,NULL),('호수영','0101010','w@w.com','호수영','$2b$10$0TUKx6cZsGlErQGcWFyMou9fs7UIuJXLggvT8xJqICUMHyGa6ZAPO',0,NULL,'8','2020-12-01 01:08:26','req');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
 DROP TABLE IF EXISTS `board`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -144,35 +173,6 @@ UNLOCK TABLES;
 --
 -- Table structure for table `users`
 --
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `id` varchar(50) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `user_name` varchar(100) NOT NULL,
-  `user_password` varchar(100) NOT NULL,
-  `user_auth` int DEFAULT NULL,
-  `user_group` varchar(100) DEFAULT NULL,
-  `user_device` varchar(100) NOT NULL,
-  `last_login` timestamp NULL DEFAULT NULL,
-  `state` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('1231','1231','1231','1231','$2b$10$YF9iKwWQCyvuIcDhI0dLDOcxOVCH0duITNJ66Bj0u7H6wj1Dec84O',0,'1231','장비없음','2020-12-16 02:11:22','active'),('12345','3232','1234','1234','$2b$10$wbkO3VlD58.DX6AKwBQzsONb.EAHfmoNogE8RSWFofMR8188MPhua',0,'1234','1234',NULL,''),('15','3232','3','23','$2b$10$Gscah0lcJqSBxztW7T3wfeITP6wICVg3qaKQl/o7PB.8LDpTb.h0u',0,'2','',NULL,NULL),('2324','232','232','232','$2b$10$EVb81Xls2qVr45N6OuzRN.TilJlCgu52AxPoLOOQXAtgVAFvXa3re',0,'232','232',NULL,NULL),('aa','aa','aa','aa','$2b$10$KC0K9.0i1cz6SogOywHGJeK7rDMrn9rdx2dliRy/dyLWDlv2F016.',0,'aa','aa','2020-12-13 07:22:27',NULL),('bcr','bcr','bcr','bcr','$2b$10$9QFO46za39Js0.Ih9PiXLur1OPTEFaYn5tmVJK3xnSLCsnyLh7D7G',2,NULL,'1','2019-12-01 06:18:12','sleep'),('ewqewq','23','23','qweqe','$2b$10$OKECPlxjfogtC4h0cRRQruyPCxqh8P26A27U2Ca/s0Lw8573EzVgK',0,'23','23',NULL,NULL),('gg','gg','gg','gg','$2b$10$J/.0oB/beVzCfAniyRXxo.Y8BQHZoAyXuudmRIlgZxLc9zZLVBBEq',0,'gg','gg',NULL,NULL),('ghghghgh','gh','gh','ghghghgh','$2b$10$2DyHc0IIWp3CBak47qEfZeJEl5La4VTPMlWz1OozuvI1sDaUVVXHW',4,'g','g',NULL,'active'),('hh','hh','hh','hh','$2b$10$A.OMigpAYZEynDtkCwf/SebLQ6ijO.J5IXiylm/9hpGWGgk.HRcDC',0,'hh','hh',NULL,NULL),('human','123','123','비번123','$2b$10$l7jLXed2nLbzell0GhPlR.JOmfwqlRSFiwXseOkLbUKAnCIj/trZ2',0,'123','123','2020-12-15 07:34:39','sleep'),('root','01046514813','ghtndud1993@naver.com','호수영','admin',0,NULL,'4',NULL,'active'),('testjinong','12312','213123','조윤성','$2b$10$P5SiR32ahFsG/9q8olw3ne04XVcxxlJclO00j3L9LGVrOhNgBfi5y',0,'23323','장비없음','2020-12-17 02:05:48',NULL),('tt','tt','tt','tt','$2b$10$T5/QaMAlpykUH5hDxMhL6OkyI5/8CmreP66KAukCqL09Y1Ww4rxxS',4,'tt','tt',NULL,NULL),('wqwqe1','2323','2323','2323','$2b$10$mahk1xBiqTTZmg3jOcl.0ehlxlvHA5tCNn8gglJaeBPQW7K47wiDe',0,NULL,'5',NULL,'dead'),('관리자','0313601970','sooyoung.jinong@gmail.com','관리자','$2b$10$1vVTIPF57FVUfX.YsFz/wuKyLt0cqlSSevD3vPvmJBKgcpgA5RITC',1,NULL,'6','2020-12-17 06:05:31','active'),('지농지농','ㅈㅈ','ㅈㅈ','지농','$2b$10$tO0Hcr1CSmadSnpEGhuu4.TT0riyscVIiey91JgyISkyP0ERAQfci',0,'ㅈㅈ','장비없음','2020-12-16 07:53:53',NULL),('테스트유저','123','123','test','$2b$10$eW6d2zurUhjktOmjcnY7xu55adoZvBHMC3sSdUaffiqmyfYUKn2pG',0,NULL,'7',NULL,'req'),('ㅍㅍ','ㅍㅍ','vv','ㅍㅍ','$2b$10$QdHjT4kwm38L99H7/QkeIe3aPyp0FEPdqRPkl70tGCoxqSTIDBsAO',4,'vv','vv',NULL,NULL),('호수영','0101010','w@w.com','호수영','$2b$10$0TUKx6cZsGlErQGcWFyMou9fs7UIuJXLggvT8xJqICUMHyGa6ZAPO',0,NULL,'8','2020-12-01 01:08:26','req');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
