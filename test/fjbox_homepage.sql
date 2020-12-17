@@ -81,32 +81,6 @@ UNLOCK TABLES;
 -- Table structure for table `board_reply`
 --
 
-DROP TABLE IF EXISTS `board_reply`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `board_reply` (
-  `sequence` int NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `contents` varchar(200) NOT NULL,
-  `write_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `group_order` int NOT NULL,
-  `orders` int NOT NULL,
-  PRIMARY KEY (`sequence`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `board_reply_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `board_reply`
---
-
-LOCK TABLES `board_reply` WRITE;
-/*!40000 ALTER TABLE `board_reply` DISABLE KEYS */;
-INSERT INTO `board_reply` VALUES (2,'관리자','wtqwtqrr','2020-11-24 09:55:47',4,1),(14,'human','21442212123434\nㅃㅉㄸ','2020-12-08 06:20:23',10,1),(15,'human','21442212123434\nㅃㅉㄸ222','2020-12-08 06:20:26',10,2),(16,'human','21442212123434ㅃㅉㄸ222qweqwg135315','2020-12-08 06:20:28',10,3),(17,'human','ㅁㄴㅁ','2020-12-08 06:21:01',10,4),(18,'human','ㅁㄴㅁ','2020-12-08 06:21:02',10,5),(19,'관리자','ㅈㅂ4231433414','2020-12-08 06:29:58',10,6),(20,'관리자','ㅕㅕㅕㅑ','2020-12-08 06:30:17',10,7),(22,'1231','21323','2020-12-08 07:21:08',10,8),(23,'1231','2323','2020-12-08 07:22:42',10,9);
-/*!40000 ALTER TABLE `board_reply` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Table structure for table `notice`
 --
@@ -183,3 +157,29 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-12-17 16:10:37
+
+DROP TABLE IF EXISTS `board_reply`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `board_reply` (
+  `sequence` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `contents` varchar(200) NOT NULL,
+  `write_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `group_order` int NOT NULL,
+  `orders` int NOT NULL,
+  PRIMARY KEY (`sequence`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `board_reply_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `board_reply`
+--
+
+LOCK TABLES `board_reply` WRITE;
+/*!40000 ALTER TABLE `board_reply` DISABLE KEYS */;
+INSERT INTO `board_reply` VALUES (2,'관리자','wtqwtqrr','2020-11-24 09:55:47',4,1),(14,'human','21442212123434\nㅃㅉㄸ','2020-12-08 06:20:23',10,1),(15,'human','21442212123434\nㅃㅉㄸ222','2020-12-08 06:20:26',10,2),(16,'human','21442212123434ㅃㅉㄸ222qweqwg135315','2020-12-08 06:20:28',10,3),(17,'human','ㅁㄴㅁ','2020-12-08 06:21:01',10,4),(18,'human','ㅁㄴㅁ','2020-12-08 06:21:02',10,5),(19,'관리자','ㅈㅂ4231433414','2020-12-08 06:29:58',10,6),(20,'관리자','ㅕㅕㅕㅑ','2020-12-08 06:30:17',10,7),(22,'1231','21323','2020-12-08 07:21:08',10,8),(23,'1231','2323','2020-12-08 07:22:42',10,9);
+/*!40000 ALTER TABLE `board_reply` ENABLE KEYS */;
+UNLOCK TABLES;
