@@ -221,7 +221,7 @@ router.get('/getList', function(req, res, next) {
             "end_page": end_page,
             "ipp": ipp
         }
-        sql = ` SELECT * FROM users LIMIT ?, ? `; //페이지수 계산 후 수만큼 조회
+        sql = ` SELECT * FROM users where user_auth!=3 LIMIT ?, ? `; //페이지수 계산 후 수만큼 조회
         connection.query(sql, [start, end], (err, list) => {
             if (err) throw err;
             for (i in list) {
@@ -416,7 +416,7 @@ router.get('/getSearchList:search', function(req, res, next) {
     if (body.option == "장비")
         option = "user_device";
     console.log(search)
-    sql = "SELECT  count(*) cnt FROM users WHERE " + option + " LIKE '%" + search + "%'";
+    sql = "SELECT  count(*) cnt FROM users WHERE " + option + " LIKE '%" + search + "%' and user_auth!=3";
     connection.query(sql, (err, data) => {
         if (err) throw err;
         if (data[0].cnt == 0) {
@@ -447,10 +447,82 @@ router.get('/getSearchList:search', function(req, res, next) {
         }
     })
 });
+/////////////////////////////////////////////////
+router.get('/getSearchJoinList:search', function(req, res, next) {
+    let search = req.params.search;
+    let ipp = 10;
+    let totalCount = 0;
+    let block = 10;
+    let total_page = 0;
+    let page = 1;
+    let start = 0;
+    let end = ipp;
+    let start_page = 1;
+    let end_page = block;
+    let where = "";
+    console.log(search);
+    body = req.query;
+    if (body.option == "아이디")
+        option = "id";
+    if (body.option == "이름")
+        option = "user_name";
+    if (body.option == "소속")
+        option = "user_group";
+    if (body.option == "연락처")
+        option = "phone";
+    if (body.option == "이메일")
+        option = "email";
+    if (body.option == "장비")
+        option = "user_device";
+    console.log(search)
+    sql = "SELECT  count(*) cnt FROM users WHERE " + option + " LIKE '%" + search + "%' and user_auth=4";
+    connection.query(sql, (err, data) => {
+        if (err) throw err;
+        if (data[0].cnt == 0) {
+            res.send({ success: false });
+        } else {
+            totalCount = data[0].cnt;
+            total_page = Math.ceil(totalCount / ipp);
+            if (body.page) page = body.page;
+            start = (page - 1) * 10;
+            start_page = Math.ceil(page / block);
+            end_page = start_page * block;
+            if (total_page < end_page) end_page = total_page;
+            let join_paging = {
+                "totalCount": totalCount,
+                "total_page": total_page,
+                "page": page,
+                "start_page": start_page,
+                "end_page": end_page,
+                "ipp": ipp
+            }
+            sql = " SELECT * FROM users WHERE " + option + " LIKE '%" + search + "%' and user_auth=4 LIMIT ?, ? ";
+            connection.query(sql, [start, end], (err, list) => {
+                if (err) throw err;
+
+                res.send({ success: true, join_list: list, join_paging: join_paging });
+            })
+        }
+    })
+});
 //////////////////////////////////////////////////
 router.post('/farmos_access', function(req, res) {
     console.log(req.body.id);
     console.log(req.body.pw);
+
+});
+////////////////////////////////////////////////////
+router.post('/reset_pw', function(req, res) {
+    var body = req.body;
+    var password = "fjbox1234"
+    const salt = bcrypt.genSaltSync(10);
+    const encryptedPassword = bcrypt.hashSync(password, salt);
+    sql = " UPDATE users SET user_password=? where id=? ";
+    connection.query(sql, [encryptedPassword, req.body.id], (err, data) => {
+        console.log(body.id);
+        if (err) throw err;
+        res.send({ success: true, message: "초기화완료" });
+    })
 
 });
 module.exports = router;

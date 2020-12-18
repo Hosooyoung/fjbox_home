@@ -56,6 +56,15 @@
              fileSize: 1024 * 1024 * 1024,
          }
      });*/
+ function getExtensionOfFilename(filename) {
+
+     var _fileLen = filename.length;
+
+     var _lastDot = filename.lastIndexOf('.');
+     var _fileExt = filename.substring(_lastDot, _fileLen).toLowerCase();
+
+     return _fileExt;
+ }
 
  function modifySeq() {
      console.log('진입은합니다.');
@@ -363,8 +372,9 @@
              if (err) throw err;
              console.log(result[0].file_path + '더하기')
              if (result[0].file_path != null) {
+                 var file_type = getExtensionOfFilename(result[0].file_path)
                  var filetitle = result[0].file_path.split('.').slice(0, -1).join('.')
-                 var show_name = filetitle.slice(0, -14)
+                 var show_name = filetitle.slice(0, -14) + file_type
              }
              var file_name = "C:/workspace/hodu/vue_project2/svr/uploads/" + result[0].file_path;
              if (fs.existsSync(file_name)) {

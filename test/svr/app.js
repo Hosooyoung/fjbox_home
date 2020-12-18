@@ -164,23 +164,7 @@ function check_sleep_and_dead() {
             }
         }
     })
-    connection.query('SELECT * FROM users WHERE user_auth=3', function(err, list) {
-        if (err) throw err;
-        var date1 = new Date();
 
-        for (i in list) {
-            if (list[i].last_login != null) {
-                var login_term = (date1.getTime() - list[i].last_login.getTime()) / (1000 * 60 * 60 * 24);
-                if (login_term >= 30) {
-                    console.log("회원탈퇴자 정보파기기한만료:id=" + list[i].id);
-                    connection.query('DELETE from users where id=?', [list[i].id], function(err, row) {
-                        if (err) throw err;
-                        console.log("파기완료");
-                    })
-                }
-            }
-        }
-    })
 };
 let timerId = setInterval(() => check_sleep_and_dead(), 1000 * 60 * 60 * 24);
 module.exports = app;
